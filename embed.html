@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Hash</title>
+	<script src="../bower_components/jquery/jquery.min.js"></script>
+	<script src="jquery.min.js"></script>
+	<script src="main.js"></script>
+</head>
+
+<body>
+	
+	<img src="carrier.jpg" id="carrier" />
+	<img src="qr-code.png" id="embed" />
+	<script>
+		$(function() {
+			$('#carrier').on('load', function () {
+				$('#embed').on('load', function() {
+					var result = embedImage($('#carrier')[0], $('#embed')[0]);
+					
+					
+					var newImage = $('<img/>').attr('src', result).appendTo('body');
+					$("#carrier, #embed").hide();
+				});
+			});
+		});
+	</script>
+</body>
+</html>
